@@ -24,7 +24,7 @@ public class App
     	
     	try {
     		itemConnector = new ItemConnector();
-//    		fruitsDemo(itemConnector);
+    		fruitsDemo(itemConnector);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
