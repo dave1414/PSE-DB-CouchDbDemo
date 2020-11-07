@@ -32,12 +32,22 @@ public class App
     	
     	try {
     		studentConnector = new StudentConnector();
-    		studentsAufgabe(studentConnector);
+    		//TODO die folgende Zeile einkommentieren, um die Ausführung der Übung zu ermöglichen
+//    		studentsAufgabe(studentConnector);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	
+    	
+    	try {
+    		itemConnector = new ItemConnector();
+    		itemConnector.getAllFruits();
+    		System.out.println("Verbindung funktioniert");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Verbndung funktioniert nicht");
+		}
     	
         
         
@@ -171,8 +181,13 @@ public class App
     public static void studentsAufgabe(StudentConnector studentConnector) {
     	
         //1. Neuen Studenten erstellen
-    	String matrikelnummer = "65734";
-    	Student neuerStudent = new Student(matrikelnummer, "William", "Gerstil", "DHBW Karlsruhe", 1.5, new Address("Schleierstraße 746", "Dresden"), 7, new String[]{"DB", "BD", "MTTP"});
+    	String matrikelnummer = "";
+    	//TODO matrikelnummer festlegen
+    	//String matrikelnummer = "";
+    	
+    	//TODO neuerStudent definieren
+    	Student neuerStudent = new Student(matrikelnummer, "", "", "", 0, null, 0, null);
+    	//neuerStudent = new Student(matrikelnummer, "vorname", "nachname", "Bachelor Uni", note, new Address("Strasse", "Ort"), Semester, new String[]{"Kurs1", "Kurs2", "Kurs3"});
         try {
         	studentConnector.saveStudent(neuerStudent);
 			System.out.println( "Saved new student " + neuerStudent);
