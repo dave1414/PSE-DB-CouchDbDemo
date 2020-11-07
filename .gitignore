@@ -1,0 +1,7 @@
+config.ini
+.classpath
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.m2e.core.prefs
+/target/
+src/main/java/de/kfru/pse/CouchDbDemo/.DS_Store
