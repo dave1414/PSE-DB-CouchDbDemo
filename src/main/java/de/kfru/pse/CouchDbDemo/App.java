@@ -24,7 +24,7 @@ public class App
     	
     	try {
     		itemConnector = new ItemConnector();
-//    		fruitsDemo(itemConnector);
+    		fruitsDemo(itemConnector);
 		} catch (IOException e) {
 			// Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class App
     	try {
     		itemConnector = new ItemConnector();
     		itemConnector.getAllFruits();
-    		System.out.println("Verbindung funktioniert");
+//    		System.out.println("Verbindung funktioniert");
 		} catch (IOException e) {
 			// Auto-generated catch block
 			System.out.println("Verbindung funktioniert nicht");
@@ -61,17 +61,17 @@ public class App
     	//get version
         System.out.println( "Version: " + itemConnector.version() );
         
-        //get item
+        //get apple
         try {
         	 System.out.println( "Apfel: " + itemConnector.getItem("apple"));
         } catch (Exception e) {
 			// Auto-generated catch block
-        	System.out.println("Error saving cucumber");
+        	System.out.println("Error getting apple");
 			e.printStackTrace();
 		}
        
         
-        //save item
+        //save cucumber
         try {
 			itemConnector.saveItem(new Item("cucumber", 0.99, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
 			System.out.println( "Saved cucumber");
@@ -81,17 +81,17 @@ public class App
 			e.printStackTrace();
 		}
         
-        //update item
+        //update cucumber
         try {
 			itemConnector.updateItem(new Item("cucumber", 0.99, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
-			System.out.println( "Updated cucumber forecfully");
+			System.out.println( "Updated cucumber");
         } catch (Exception e) {
 			// Auto-generated catch block
         	System.out.println("Error updating cucumber");
 			e.printStackTrace();
 		}
         
-       //update item forcefully
+       //update cucumber forcefully
         try {
 			itemConnector.updateItemForcefully(new Item("cucumber", 0.49, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
 			System.out.println( "Updated cucumber forecfully");
@@ -101,7 +101,7 @@ public class App
 			e.printStackTrace();
 		}
         
-        //delete item
+        //delete cucumber
         try {
 			itemConnector.deleteItem("cucumber");
 			System.out.println( "Deleted cucumber");
