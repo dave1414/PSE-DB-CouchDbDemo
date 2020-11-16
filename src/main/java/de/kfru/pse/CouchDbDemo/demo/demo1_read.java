@@ -3,7 +3,6 @@ package de.kfru.pse.CouchDbDemo.demo;
 import java.io.IOException;
 
 import de.kfru.pse.CouchDbDemo.CloudantConnector.ItemConnector;
-import de.kfru.pse.CouchDbDemo.CloudantConnector.StudentConnector;
 
 public class demo1_read {
 

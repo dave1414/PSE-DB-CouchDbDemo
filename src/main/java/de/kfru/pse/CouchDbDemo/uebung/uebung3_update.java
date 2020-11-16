@@ -17,8 +17,7 @@ public class uebung3_update {
 		}
     	
     	//1. Studenten aus DB abrufen
-    	//TODO matrikelnummer festlegen
-    	Student meinStudent = studentConnector.getStudent("");
+    	Student meinStudent = studentConnector.getStudent("86734");
     	
     	
     	//3. Den eigenen Studenten ändern und geändert abspeichern

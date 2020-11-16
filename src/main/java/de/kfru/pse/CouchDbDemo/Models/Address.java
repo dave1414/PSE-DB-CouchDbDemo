@@ -4,11 +4,6 @@ public class Address {
 	String street;
 	String city;
 	
-	/**
-	 * Konstruktor
-	 * @param street die Straße mitsamt Hausnummer
-	 * @param city die Stadt
-	 */
 	public Address(String street, String city) {
 		this.street = street;
 		this.city = city;

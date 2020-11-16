@@ -3,6 +3,7 @@ package de.kfru.pse.CouchDbDemo.uebung;
 import java.io.IOException;
 
 import de.kfru.pse.CouchDbDemo.CloudantConnector.StudentConnector;
+import de.kfru.pse.CouchDbDemo.Models.Address;
 import de.kfru.pse.CouchDbDemo.Models.Student;
 
 public class uebung1_create {
@@ -16,9 +17,7 @@ public class uebung1_create {
 			e.printStackTrace();
 		}
     	
-    	//TODO neuerStudent definieren
-    	Student neuerStudent = new Student("", "", "", "", 0, null, 0, null);
-    	//neuerStudent = new Student(matrikelnummer, "vorname", "nachname", "Bachelor Uni", note, new Address("Strasse", "Ort"), Semester, new String[]{"Kurs1", "Kurs2", "Kurs3"});
+    	Student neuerStudent = new Student("86734", "Michael", "Klose", "Technische Universität München", 1.3, new Address("Garagenstraße", "München"), 1, new String[]{"DB"});
         
     	try {
         	studentConnector.saveStudent(neuerStudent);
