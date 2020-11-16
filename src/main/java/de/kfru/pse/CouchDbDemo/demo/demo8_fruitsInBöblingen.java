@@ -1,11 +1,11 @@
-package de.kfru.pse.CouchDbDemo;
+package de.kfru.pse.CouchDbDemo.demo;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.ArrayList;
 
 import de.kfru.pse.CouchDbDemo.CloudantConnector.ItemConnector;
 
-public class demo10_countItemsPerCategory {
+public class demo8_fruitsInBöblingen {
 	public static void main(String[] args) {
 		ItemConnector itemConnector = null;
     	
@@ -16,12 +16,12 @@ public class demo10_countItemsPerCategory {
 			e.printStackTrace();
 		}
     	
-    	//get number of categories in all stores from view
+    	//get all fruits sold in Böblingen from view
         try {
-        	Map<String,Integer> countOfItems = itemConnector.getCategoriesPerStoreCount();
-        	System.out.println("Presenting number of items per category per store: ");
-			for (String key : countOfItems.keySet()) {
-				System.out.println(key + ": " + countOfItems.get(key));
+			ArrayList<String> fruitsInBoeblingen = itemConnector.getFruitsSoldIn("Böblingen");
+			System.out.println("Presenting fruits sold in Böblingen: ");
+			for (String item : fruitsInBoeblingen) {
+				System.out.println(item);
 			}
 		} catch (IOException e) {
 			// Auto-generated catch block

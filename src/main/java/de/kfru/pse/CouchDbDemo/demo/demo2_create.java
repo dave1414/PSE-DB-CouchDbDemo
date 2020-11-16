@@ -1,12 +1,12 @@
-package de.kfru.pse.CouchDbDemo;
+package de.kfru.pse.CouchDbDemo.demo;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import de.kfru.pse.CouchDbDemo.CloudantConnector.ItemConnector;
 import de.kfru.pse.CouchDbDemo.Models.Item;
+import de.kfru.pse.CouchDbDemo.Models.Region;
 
-public class demo6_allFruits {
+public class demo2_create {
 
 	public static void main(String[] args) {
 		ItemConnector itemConnector = null;
@@ -18,16 +18,13 @@ public class demo6_allFruits {
 			e.printStackTrace();
 		}
     	
-    	//get all fruits from view
+    	//create cucumber
         try {
-			ArrayList<Item> allFruits = itemConnector.getAllFruits();
-			System.out.println("Presenting all fruits: ");
-			for (Item item : allFruits) {
-				System.out.println(item);
-			}
-		} catch (IOException e) {
+			itemConnector.saveItem(new Item("cucumber", 0.99, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
+			System.out.println( "Saved cucumber");
+        } catch (Exception e) {
 			// Auto-generated catch block
-			System.out.println("Error getting all fruits");
+        	System.out.println("Error saving cucumber");
 			e.printStackTrace();
 		}
 

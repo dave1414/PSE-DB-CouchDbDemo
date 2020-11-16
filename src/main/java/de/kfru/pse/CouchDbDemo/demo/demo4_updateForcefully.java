@@ -1,4 +1,4 @@
-package de.kfru.pse.CouchDbDemo;
+package de.kfru.pse.CouchDbDemo.demo;
 
 import java.io.IOException;
 

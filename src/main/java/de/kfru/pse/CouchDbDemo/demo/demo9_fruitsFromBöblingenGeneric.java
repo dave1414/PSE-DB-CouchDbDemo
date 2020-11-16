@@ -1,11 +1,11 @@
-package de.kfru.pse.CouchDbDemo;
+package de.kfru.pse.CouchDbDemo.demo;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import de.kfru.pse.CouchDbDemo.CloudantConnector.ItemConnector;
 
-public class demo8_fruitsInBöblingen {
+public class demo9_fruitsFromBöblingenGeneric {
 	public static void main(String[] args) {
 		ItemConnector itemConnector = null;
     	
@@ -16,9 +16,9 @@ public class demo8_fruitsInBöblingen {
 			e.printStackTrace();
 		}
     	
-    	//get all fruits sold in Böblingen from view
+    	//get all fruits sold in Böblingen generally from view
         try {
-			ArrayList<String> fruitsInBoeblingen = itemConnector.getFruitsSoldIn("Böblingen");
+			ArrayList<String> fruitsInBoeblingen = itemConnector.getCategoriesPerStore("Böblingen", "fruit");
 			System.out.println("Presenting fruits sold in Böblingen: ");
 			for (String item : fruitsInBoeblingen) {
 				System.out.println(item);

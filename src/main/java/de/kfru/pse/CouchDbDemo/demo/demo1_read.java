@@ -1,12 +1,11 @@
-package de.kfru.pse.CouchDbDemo;
+package de.kfru.pse.CouchDbDemo.demo;
 
 import java.io.IOException;
 
 import de.kfru.pse.CouchDbDemo.CloudantConnector.ItemConnector;
-import de.kfru.pse.CouchDbDemo.Models.Item;
-import de.kfru.pse.CouchDbDemo.Models.Region;
+import de.kfru.pse.CouchDbDemo.CloudantConnector.StudentConnector;
 
-public class demo3_update {
+public class demo1_read {
 
 	public static void main(String[] args) {
 		ItemConnector itemConnector = null;
@@ -18,16 +17,14 @@ public class demo3_update {
 			e.printStackTrace();
 		}
     	
-    	//update cucumber
+    	//get apple
         try {
-			itemConnector.updateItem(new Item("cucumber", 0.99, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
-			System.out.println( "Updated cucumber");
+        	 System.out.println( "Apfel: " + itemConnector.getItem("apple"));
         } catch (Exception e) {
 			// Auto-generated catch block
-        	System.out.println("Error updating cucumber");
+        	System.out.println("Error getting apple");
 			e.printStackTrace();
 		}
-
 	}
 
 }

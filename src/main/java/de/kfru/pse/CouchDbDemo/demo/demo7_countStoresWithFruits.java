@@ -1,11 +1,10 @@
-package de.kfru.pse.CouchDbDemo;
+package de.kfru.pse.CouchDbDemo.demo;
 
 import java.io.IOException;
 
 import de.kfru.pse.CouchDbDemo.CloudantConnector.ItemConnector;
 
-public class demo5_delete {
-
+public class demo7_countStoresWithFruits {
 	public static void main(String[] args) {
 		ItemConnector itemConnector = null;
     	
@@ -16,16 +15,15 @@ public class demo5_delete {
 			e.printStackTrace();
 		}
     	
-    	//delete cucumber
+    	//get number of stores with fruits from view
         try {
-			itemConnector.deleteItem("cucumber");
-			System.out.println( "Deleted cucumber");
-        } catch (Exception e) {
+			Integer count = itemConnector.countStoresWithFruits();
+			System.out.println("There are " + count + " stores with fruits");
+		} catch (IOException e) {
 			// Auto-generated catch block
-        	System.out.println("Error deleting cucumber");
+			System.out.println("Error getting number of stores with fruits");
 			e.printStackTrace();
 		}
 
 	}
-
 }
