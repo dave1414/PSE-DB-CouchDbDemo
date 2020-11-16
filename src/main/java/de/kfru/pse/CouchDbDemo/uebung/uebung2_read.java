@@ -17,7 +17,8 @@ public class uebung2_read {
 		}
     	
     	//2. Den eigenen Studenten wieder auslesen
-        Student meinStudent = studentConnector.getStudent("86734");
+    	//TODO: Matrikelnummer in Methodenaufruf ergänzen
+        Student meinStudent = studentConnector.getStudent("");
         System.out.println( "Mein Student: " + meinStudent);
 	}
 }

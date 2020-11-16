@@ -17,7 +17,10 @@ public class uebung1_create {
 			e.printStackTrace();
 		}
     	
-    	Student neuerStudent = new Student("86734", "Michael", "Klose", "Technische Universität München", 1.3, new Address("Garagenstraße", "München"), 1, new String[]{"DB"});
+    	//1. Neuen Studenten erstellen
+    	//TODO: neuen Studenten ersellen
+    	Student neuerStudent = new Student("", "", "", "", 0, new Address("", ""), 0, new String[]{"", ""});
+    	//new Student("matrikelnummer", "vorname", "nachname", "bacheloruni", note, new Address("Strasse", "Stadt"), semester, new String[]{"fach1", "fach2", ...});
         
     	try {
         	studentConnector.saveStudent(neuerStudent);

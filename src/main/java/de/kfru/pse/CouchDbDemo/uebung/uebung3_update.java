@@ -17,7 +17,8 @@ public class uebung3_update {
 		}
     	
     	//1. Studenten aus DB abrufen
-    	Student meinStudent = studentConnector.getStudent("86734");
+    	//TODO: Matrikelnummer in Methodenaufruf ergänzen
+    	Student meinStudent = studentConnector.getStudent("");
     	
     	
     	//3. Den eigenen Studenten ändern und geändert abspeichern
