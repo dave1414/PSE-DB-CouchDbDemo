@@ -26,18 +26,28 @@ public class App
     		itemConnector = new ItemConnector();
     		fruitsDemo(itemConnector);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
     	
     	try {
     		studentConnector = new StudentConnector();
-    		studentsAufgabe(studentConnector);
+    		//TODO die folgende Zeile einkommentieren, um die Ausführung der Übung zu ermöglichen
+//    		studentsAufgabe(studentConnector);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
     	
+    	
+    	try {
+    		itemConnector = new ItemConnector();
+    		itemConnector.getAllFruits();
+//    		System.out.println("Verbindung funktioniert");
+		} catch (IOException e) {
+			// Auto-generated catch block
+			System.out.println("Verbindung funktioniert nicht");
+		}
     	
         
         
@@ -51,52 +61,52 @@ public class App
     	//get version
         System.out.println( "Version: " + itemConnector.version() );
         
-        //get item
+        //get apple
         try {
         	 System.out.println( "Apfel: " + itemConnector.getItem("apple"));
         } catch (Exception e) {
-			// TODO Auto-generated catch block
-        	System.out.println("Error saving cucumber");
+			// Auto-generated catch block
+        	System.out.println("Error getting apple");
 			e.printStackTrace();
 		}
        
         
-        //save item
+        //save cucumber
         try {
 			itemConnector.saveItem(new Item("cucumber", 0.99, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
 			System.out.println( "Saved cucumber");
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error saving cucumber");
 			e.printStackTrace();
 		}
         
-        //update item
+        //update cucumber
         try {
 			itemConnector.updateItem(new Item("cucumber", 0.99, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
-			System.out.println( "Updated cucumber forecfully");
+			System.out.println( "Updated cucumber");
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error updating cucumber");
 			e.printStackTrace();
 		}
         
-       //update item forcefully
+       //update cucumber forcefully
         try {
 			itemConnector.updateItemForcefully(new Item("cucumber", 0.49, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
 			System.out.println( "Updated cucumber forecfully");
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error updating cucumber forcefully");
 			e.printStackTrace();
 		}
         
-        //delete item
+        //delete cucumber
         try {
 			itemConnector.deleteItem("cucumber");
 			System.out.println( "Deleted cucumber");
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error deleting cucumber");
 			e.printStackTrace();
 		}
@@ -109,7 +119,7 @@ public class App
 				System.out.println(item);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			System.out.println("Error getting all fruits");
 			e.printStackTrace();
 		}
@@ -119,7 +129,7 @@ public class App
 			Integer count = itemConnector.countStoresWithFruits();
 			System.out.println("There are " + count + " stores with fruits");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			System.out.println("Error getting number of stores with fruits");
 			e.printStackTrace();
 		}
@@ -132,7 +142,7 @@ public class App
 				System.out.println(item);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			System.out.println("Error getting fruits sold in Böblingen");
 			e.printStackTrace();
 		}
@@ -145,7 +155,7 @@ public class App
 				System.out.println(item);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			System.out.println("Error getting fruits sold in Böblingen");
 			e.printStackTrace();
 		}
@@ -158,7 +168,7 @@ public class App
 				System.out.println(key + ": " + countOfItems.get(key));
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			System.out.println("Error getting fruits sold in Böblingen");
 			e.printStackTrace();
 		}
@@ -171,13 +181,18 @@ public class App
     public static void studentsAufgabe(StudentConnector studentConnector) {
     	
         //1. Neuen Studenten erstellen
-    	String matrikelnummer = "65734";
-    	Student neuerStudent = new Student(matrikelnummer, "William", "Gerstil", "DHBW Karlsruhe", 1.5, new Address("Schleierstraße 746", "Dresden"), 7, new String[]{"DB", "BD", "MTTP"});
+    	String matrikelnummer = "";
+    	//TODO matrikelnummer festlegen
+    	//String matrikelnummer = "";
+    	
+    	//TODO neuerStudent definieren
+    	Student neuerStudent = new Student(matrikelnummer, "", "", "", 0, null, 0, null);
+    	//neuerStudent = new Student(matrikelnummer, "vorname", "nachname", "Bachelor Uni", note, new Address("Strasse", "Ort"), Semester, new String[]{"Kurs1", "Kurs2", "Kurs3"});
         try {
         	studentConnector.saveStudent(neuerStudent);
 			System.out.println( "Saved new student " + neuerStudent);
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error saving new student");
 			e.printStackTrace();
 		}
@@ -192,7 +207,7 @@ public class App
         	studentConnector.updateStudent(meinStudent);
 			System.out.println( "Updated " + meinStudent);
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error updating " + meinStudent);
 			e.printStackTrace();
 		}
@@ -205,7 +220,7 @@ public class App
 				System.out.println("- " + student);
 			}
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error getting all students coming from DHBW");
 			e.printStackTrace();
 		}
@@ -216,7 +231,7 @@ public class App
 			System.out.println("Zeige Anzahl alle Studenten im zweiten Semester an: " + allStudentsInSemester2Count);
         	
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error getting number of students in semester 2");
 			e.printStackTrace();
 		}
@@ -229,7 +244,7 @@ public class App
 				System.out.println("- " + student);
 			}
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error getting all students who visited DB");
 			e.printStackTrace();
 		}
@@ -239,7 +254,7 @@ public class App
         	int countOfStudents = studentConnector.getStudentCountPerModuleBetterThan("DB", 2);
         	System.out.println("Presenting number of students in DB better than 2.0: " + countOfStudents);
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
         	System.out.println("Error getting all students who visited DB");
 			e.printStackTrace();
 		}
