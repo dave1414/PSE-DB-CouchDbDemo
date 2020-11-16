@@ -49,8 +49,8 @@ public class StudentConnector {
 	 * @return der Student, wie er in der Datenbank steht
 	 */
 	public Student getStudent(String studentName) {
-		//TODO Datenbankoperation implementieren
-		return new Student("", "", "", "", 0, null, 0, new String[]{"", ""});
+		Student doc = db.find(Student.class, studentName);
+		return doc;
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public class StudentConnector {
 	 * @return true, wenn die Speicherung erfolgreich war
 	 */
 	public boolean saveStudent(Student student) {
-		//TODO Datenbankoperation implementieren
+		Response resp = db.save(student);
 		return true;
 	}
 	
@@ -69,8 +69,19 @@ public class StudentConnector {
 	 * @return true, wenn erfolgreich gespeichert wurde
 	 */
 	public boolean updateStudent(Student student) throws Exception {
-		//TODO Datenbankoperation implementieren
+		Response resp = db.update(student);
 		return true;
+	}
+	
+	/**
+	 * UPDATE Operation für einen Studenten, nur dass die _rev vorher ausgelesen und aktualisiert wird -> übersschreibt potenzielle Änderungen in der DB (Lost Update Problematik)
+	 * @param student der Student, der geupdated werden soll
+	 * @return true, wenn erfolgreich gespeichert wurde
+	 */
+	public boolean updateStudentForcefully(Student student) throws Exception {
+		Student storedItem = this.getStudent(student.get_id());
+		student.set_rev(storedItem.get_rev());
+		return this.updateStudent(student);
 	}
 	
 	/**
@@ -80,8 +91,18 @@ public class StudentConnector {
 	 * @throws IOException falls ein Fehler eintritt
 	 */
 	public int getStudentsInSemesterCount(int semester) throws IOException {
-		//TODO Datenbankoperation implementieren
-		return 0;
+		//get a ViewRequestBuilder from the database for the chosen view
+		 ViewRequestBuilder viewBuilder = db.getViewRequestBuilder("david", "studentsBySemester");
+
+		 //build a new request and specify any parameters required
+		 ViewRequest<Number, Integer> request = viewBuilder.newRequest(Key.Type.NUMBER, Integer.class)
+		 .keys(semester)
+		 .build();
+
+		 //perform the request and get the response
+		 ViewResponse<Number, Integer> response = request.getResponse();
+
+		 return response.getValues().get(0);
 	}
 	
 	/**
@@ -91,8 +112,24 @@ public class StudentConnector {
 	 * @throws IOException
 	 */
 	public ArrayList<Student> getAllStudentsWithBachelorAt(String bachelorUniversity) throws IOException {
-		//TODO Datenbankoperation implementieren
-		return null;
+		//get a ViewRequestBuilder from the database for the chosen view
+		 ViewRequestBuilder viewBuilder = db.getViewRequestBuilder("david", "studentsByUniversity");
+
+		 //build a new request and specify any parameters required
+		 ViewRequest<String, Student> request = viewBuilder.newRequest(Key.Type.STRING, Student.class)
+		 .keys(bachelorUniversity)
+		 .build();
+
+		 //perform the request and get the response
+		 ViewResponse<String, Student> response = request.getResponse();
+
+		 //loop through the rows of the response
+		 ArrayList<Student> allStudents = new ArrayList<Student>();
+		 for (ViewResponse.Row<String, Student> row : response.getRows()) {
+			 Student student = row.getValue();
+			 allStudents.add(student);
+		 }
+		 return allStudents;
 	}
 	
 	/**
@@ -102,8 +139,24 @@ public class StudentConnector {
 	 * @throws IOException falls ein Fehler auftritt
 	 */
 	public ArrayList<Student> getStudentsByModule(String module) throws IOException {
-		//TODO Datenbankoperation implementieren
-		return null;
+		//get a ViewRequestBuilder from the database for the chosen view
+		 ViewRequestBuilder viewBuilder = db.getViewRequestBuilder("david", "modulesPerStudent");
+
+		 //build a new request and specify any parameters required
+		 ViewRequest<String, Student> request = viewBuilder.newRequest(Key.Type.STRING, Student.class)
+		 .keys(module)
+		 .build();
+
+		//perform the request and get the response
+		 ViewResponse<String, Student> response = request.getResponse();
+
+		 //loop through the rows of the response
+		 ArrayList<Student> students = new ArrayList<Student>();
+		 for (ViewResponse.Row<String, Student> row : response.getRows()) {
+			 Student student = row.getValue();
+			 students.add(student);
+		 }
+		 return students;
 	}
 	
 	/**
@@ -114,8 +167,20 @@ public class StudentConnector {
 	 * @throws IOException falls ein Fehelr auftritt
 	 */
 	public int getStudentCountPerModuleBetterThan(String modul, int grade) throws IOException {
-		//TODO Datenbankoperation implementieren
-		return 0;
+		//get a ViewRequestBuilder from the database for the chosen view
+		 ViewRequestBuilder viewBuilder = db.getViewRequestBuilder("david", "studentsPerModulPerGrade");
+
+		 //build a new request and specify any parameters required
+		 ViewRequest<ComplexKey, Integer> request = viewBuilder.newRequest(Key.Type.COMPLEX, Integer.class)
+		 .startKey(Key.complex(modul).add(1))
+		 .endKey(Key.complex(modul).add(grade))
+		 .groupLevel(1)
+		 .build();
+
+		//perform the request and get the response
+		 ViewResponse<ComplexKey, Integer> response = request.getResponse();
+
+		 return response.getValues().get(0);
 	}
 
 }

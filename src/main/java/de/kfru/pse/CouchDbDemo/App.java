@@ -22,11 +22,6 @@ public class App
 			// Auto-generated catch block
 			System.out.println("Verbindung funktioniert nicht");
 		}
-    	
-        
-        
+    	 
     }
-    
-    
- 
 }

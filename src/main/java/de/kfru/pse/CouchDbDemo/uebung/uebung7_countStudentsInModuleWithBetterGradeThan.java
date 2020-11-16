@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import de.kfru.pse.CouchDbDemo.CloudantConnector.StudentConnector;
 
-public class uebung7_studentsInModuleWithBetterGradeThan {
+public class uebung7_countStudentsInModuleWithBetterGradeThan {
 	public static void main(String[] args) {
     	StudentConnector studentConnector = null;
     	

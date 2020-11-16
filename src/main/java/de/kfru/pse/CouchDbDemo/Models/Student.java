@@ -14,17 +14,6 @@ public class Student {
 	private int semester;
 	String[] courses;
 	
-	/**
-	 * Konstruktor
-	 * @param _id Matrikelnummer des Studenten
-	 * @param firstName Vorname des Studenten
-	 * @param lastName Nachname des Studenten
-	 * @param bachelorUniversity Universität, bei der der Bachelor erworben wurde
-	 * @param bachelorGrade Note aus dem Bachelorstudium
-	 * @param address Adresse des Studenten
-	 * @param semester Semester in dem der Student ist
-	 * @param courses String Array mit allen Modulen, die der Student besucht
-	 */
 	public Student(String _id, String firstName, String lastName, String bachelorUniversity, double bachelorGrade, Address address, int semester, String[] courses) {
 		this._id = _id;
 		this.firstName = firstName;
