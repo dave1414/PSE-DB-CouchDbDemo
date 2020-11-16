@@ -6,21 +6,21 @@ public class Item {
 	
 	private String _id;
 	private String _rev;
-	double price;
+	private double price;
 	String category;
 	Region origin;
 	String[] stores;
 	
 	public Item(String _id, double price, String category, Region origin, String[] stores) {
 		this.set_id(_id);
-		this.price = price;
+		this.setPrice(price);
 		this.origin = origin;
 		this.stores = stores;
 		this.category = category;
 	}
 	
 	public String toString() {
-		return get_id() + " (" + category + ") in revision " + get_rev() + " for " + price + "€ from " + origin + " sold in " + Arrays.toString(stores);
+		return get_id() + " (" + category + ") in revision " + get_rev() + " for " + getPrice() + "€ from " + origin + " sold in " + Arrays.toString(stores);
 	}
 
 	public String get_id() {
@@ -37,6 +37,14 @@ public class Item {
 
 	public void set_rev(String _rev) {
 		this._rev = _rev;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 }
