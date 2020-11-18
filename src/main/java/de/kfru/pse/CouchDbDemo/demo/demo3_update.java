@@ -20,7 +20,7 @@ public class demo3_update {
     	
     	//update cucumber
         try {
-			itemConnector.updateItem(new Item("cucumber", 0.99, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
+			itemConnector.updateItem(new Item("cucumber", 0.49, "vegetables", new Region("Spain", "Madrid"), new String[]{"Böblingen", "Berlin"}));
 			System.out.println( "Updated cucumber");
         } catch (Exception e) {
 			// Auto-generated catch block
