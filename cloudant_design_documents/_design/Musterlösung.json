@@ -1,0 +1,24 @@
+{
+  "_id": "_design/david",
+  "_rev": "21-b50fbeeb7ba6f5022ecb235f1a86b163",
+  "views": {
+    "studentsByUniversity": {
+      "map": "function (doc) {\n  if (doc.bachelorUniversity != null){\n    emit(doc.bachelorUniversity, doc);\n  }\n}"
+    },
+    "studentsBySemester": {
+      "map": "function (doc) {\n  if(doc.semester != null){\n    emit(doc.semester, doc)\n  }\n}",
+      "reduce": "_count"
+    },
+    "studentsByGrade": {
+      "map": "function (doc) {\n  if(doc.bachelorGrade != null){\n    emit(doc.bachelorGrade, doc)\n  }\n}"
+    },
+    "modulesPerStudent": {
+      "map": "function (doc) {\n  if (doc.courses != null && doc.courses.length > 0){\n    for (var indx in doc.courses) {\n        emit(doc.courses[indx], doc)\n      }\n  }\n}"
+    },
+    "studentsPerModulPerGrade": {
+      "map": "function (doc) {\n  if (doc.bachelorGrade !== null){\n    if (doc.courses && doc.courses.length > 0){\n      for (var indx in doc.courses) {\n        emit([doc.courses[indx], doc.bachelorGrade], doc._id)\n      }\n    }\n  }\n}",
+      "reduce": "_count"
+    }
+  },
+  "language": "javascript"
+}
